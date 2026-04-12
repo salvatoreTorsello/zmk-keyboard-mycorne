@@ -17,14 +17,11 @@
                                 &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
                                 &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
                                 &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                                &kp LGUI &mo <LOWER> &kp SPACE            &kp RET &mo <RAISE> &kp RALT
-
+                                &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
                         >;
                 };
                 lower_layer {
                         display-name = "Lower Layer";
-                        layer = <LOWER>;
-
                         // -----------------------------------------------------------------------------------------
                         // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
                         // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
@@ -40,8 +37,6 @@
 
                 raise_layer {
                         display-name = "Raise Layer";
-                        layer = <RAISE>;
-
                         // -----------------------------------------------------------------------------------------
                         // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
                         // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
@@ -53,19 +48,6 @@
                                 &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
                                 &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
-                };
-        };
-
-        macros {
-                LOWER: lower_macro {
-                        compatible = "zmk,behavior-momentary-layer";
-                        #binding-cells = <0>;
-                        bindings = <&mo 1>;
-                };
-                RAISE: raise_macro {
-                        compatible = "zmk,behavior-momentary-layer";
-                        #binding-cells = <0>;
-                        bindings = <&mo 2>;
                 };
         };
 };
