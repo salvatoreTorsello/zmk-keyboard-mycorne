@@ -5,25 +5,21 @@
 };
 
 // Switch matrix
-// - ROW0 - A2/0.02_H
-// - ROW1 - A4/0.03H
-// - ROW2 - A10/0.28
-// - ROW3 - A_MISO/1.14
-// - COL0 - B9_RX/1.12
-// - COL1 - B8_TX/1.11
+// - COL0 - B8_TX/1.11
+// - COL1 - B9_RX/1.12
 // - COL2 - A7_SCK/1.13
-// - COL3 - A11/0.29
-// - COL4 - A6_MOSI/1.15
+// - COL3 - A6_MOSI/1.15
+// - COL4 - A11/0.29
 // - COL5 - NFC2/0.10_H
 
 &kscan0 {
         col-gpios
-                = <&gpio0 10 GPIO_ACTIVE_HIGH>   //Col0
-                , <&gpio1 15 GPIO_ACTIVE_HIGH>   //Col1
-                , <&gpio0 29 GPIO_ACTIVE_HIGH>   //Col2
-                , <&gpio1 13 GPIO_ACTIVE_HIGH>   //Col3
-                , <&gpio1 11 GPIO_ACTIVE_HIGH>   //Col4
-                , <&gpio1 12 GPIO_ACTIVE_HIGH>   //Col5
+                = <&gpio1 11 GPIO_ACTIVE_HIGH>   //Col0
+                , <&gpio1 12 GPIO_ACTIVE_HIGH>   //Col1
+                , <&gpio1 13 GPIO_ACTIVE_HIGH>   //Col2
+                , <&gpio1 15 GPIO_ACTIVE_HIGH>   //Col3
+                , <&gpio0 29 GPIO_ACTIVE_HIGH>   //Col4
+                , <&gpio0 10 GPIO_ACTIVE_HIGH>   //Col5
                 ;
 };
 
