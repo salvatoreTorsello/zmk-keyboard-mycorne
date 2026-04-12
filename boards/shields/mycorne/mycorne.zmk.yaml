@@ -1,0 +1,13 @@
+file_format: "1"
+id: mycorne
+name: MyCorne
+type: shield
+url: https://github.com/salvatoreTorsello/corne-zmk
+requires: [seeeduino_xiao_ble]
+exposes: []
+features:
+  - keys
+  - encoder
+siblings:
+  - mycorne_left
+  - mycorne_right
