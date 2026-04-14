@@ -1,7 +1,7 @@
 #include "mycorne.dtsi"
 
 &default_transform {
-	col-offset = <6>;
+        col-offset = <6>;
 };
 
 // Switch matrix
@@ -23,3 +23,15 @@
                 ;
 };
 
+&right_encoder {
+        status = "okay";
+};
+
+/* Disable all SPI */
+&spi0 {
+    status = "disabled";
+};
+
+&spi1 {
+    status = "disabled";
+};
