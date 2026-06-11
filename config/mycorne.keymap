@@ -20,15 +20,6 @@
                         #binding-cells = <2>;
                         tapping-term-ms = <200>;
                 };
-
-                bt_hold_tap: bt_hold_tap {
-                        compatible = "zmk,behavior-hold-tap";
-                        label = "BT_HOLD_TAP";
-                        bindings = <&bt>, <&bt>;
-                        #binding-cells = <2>;
-                        tapping-term-ms = <1000>;
-                        flavor = "tap-preferred";
-                };
         };
 
         keymap {
@@ -52,12 +43,12 @@
 
                         bindings = <
                                 &kp ESCAPE  &trans  &trans                          &trans  &trans     &trans  &kp N7        &kp N8        &kp N9        &trans      &trans  &kp BSPC
-                                &trans      &trans  &trans                          &trans  &trans     &trans  &kp N4        &kp N5        &kp NUMBER_6  &trans      &trans  &trans
-                                &trans      &trans  &trans                          &trans  &trans     &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans      &trans  &trans
-                                &bt_hold_tap BT_CLR_ALL BT_NXT  &trans  &kp SPACE  &trans  &trans        &kp ENTER     &kp N0        &kp PERIOD
+                                &trans      &trans  &trans                          &trans  &trans     &trans  &kp N4        &kp N5        &kp N6  &trans      &trans  &trans
+                                &trans      &trans  &trans                          &trans  &trans     &trans  &kp N1  &kp N2  &kp N3  &trans      &trans  &trans
+                                &bt BT_NXT  &trans  &kp SPACE  &trans  &trans        &kp ENTER     &kp N0        &kp PERIOD
                         >;
 
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+                        sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>;
                 };
 
                 raise_layer {
