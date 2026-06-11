@@ -1,68 +1,94 @@
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
 / {
-
-        keymap {
-                compatible = "zmk,keymap";
-
-                default_layer {
-                        display-name = "Default Layer";
-
-                        // -----------------------------------------------------------------------------------------
-                        // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-                        // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-                        // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-                        //              | GUI | LWR | SPC |     |   |     | ENT | RSE  | ALT |
-
-                        bindings = <
-                                &kp TAB    &kp Q  &kp W     &kp E  &kp R      &kp T   &kp Y   &kp U    &kp I      &kp O     &kp P     &kp BSPC
-                                &kp LCTRL  &kp A  &kp S     &kp D  &kp F      &kp G   &kp H   &kp J    &kp K      &kp L     &kp SEMI  &kp SQT
-                                &kp LSHFT  &kp Z  &kp X     &kp C  &kp V      &kp B   &kp N   &kp M    &kp COMMA  &kp DOT   &kp FSLH  &kp ESC
-                                &kp LGUI  &mo 1  &kp SPACE  &trans  &trans  &kp RET  &mo 2      &kp RALT
-                        >;
-
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-                };
-
-                lower_layer {
-                        display-name = "Lower Layer";
-
-                        // -----------------------------------------------------------------------------------------
-                        // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-                        // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-                        // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-                        //              | GUI |     | SPC |     |   |     | ENT |     | ALT |
-
-                        bindings = <
-                                &kp TAB     &kp N1          &kp N2        &kp N3        &kp N4        &kp N5        &kp N6    &kp N7    &kp N8  &kp N9     &kp N0  &kp BSPC
-                                &bt BT_CLR  &bt BT_CLR_ALL  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
-                                &kp LSHFT   &trans          &trans        &trans        &trans        &trans        &trans    &trans    &trans  &trans     &trans  &trans
-                                &kp LGUI      &trans        &kp SPACE     &trans        &trans    &kp RET   &trans  &kp RALT
-                        >;
-
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-                };
-
-                raise_layer {
-                        display-name = "Raise Layer";
-
-                        // -----------------------------------------------------------------------------------------
-                        // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
-                        // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-                        // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-                        //              | GUI |     | SPC |     |   |     | ENT |     | ALT |
-
-                        bindings = <
-                                &kp TAB    &kp EXCL  &kp AT    &kp HASH  &kp DLLR   &kp PRCNT  &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-                                &kp LCTRL  &trans    &trans    &trans    &trans     &trans     &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-                                &kp LSHFT  &trans    &trans    &trans    &trans     &trans     &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                                &kp LGUI  &trans    &kp SPACE  &trans     &trans     &kp RET    &trans     &kp RALT
-                        >;
-                                
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-                };
+    behaviors {
+        hold_mo_tap_kp: hold_mo_tap_kp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_MO_TAP_KP";
+            #binding-cells = <2>;
+            tapping-term-ms = <350>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
         };
 
+        hold_kp_tap_kp: hold_kp_tap_kp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_KP_TAP_KP";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            display-name = "Default Layer";
+
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
+            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+            //              | GUI | LWR | SPC |     |   |     | ENT | RSE  | ALT |
+
+            bindings = <
+&kp ESCAPE               &kp Q                    &kp W                    &kp E                    &kp R                             &kp T   &hold_kp_tap_kp LC(Y) Y  &kp U                            &kp I        &kp O     &kp P     &kp BSPC
+&kp LCTRL                &kp A                    &kp S                    &kp D                    &kp F                             &kp G   &kp H                    &kp J                            &kp K        &kp L     &kp SEMI  &kp SQT
+&hold_mo_tap_kp 3 LSHFT  &hold_kp_tap_kp LC(Z) Z  &hold_kp_tap_kp LC(X) X  &hold_kp_tap_kp LC(C) C  &hold_kp_tap_kp LC(V) V           &kp B   &kp N                    &kp M                            &kp COMMA    &kp DOT   &kp FSLH  &trans
+                                                  &kp LGUI                 &hold_mo_tap_kp 1 TAB    &hold_kp_tap_kp LEFT_SHIFT SPACE  &trans  &trans                   &hold_kp_tap_kp RIGHT_ALT ENTER  &lt 2 SPACE  &kp RALT
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        lower_layer {
+            display-name = "Lower Layer";
+
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
+            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+            //              | GUI |     | SPC |     |   |     | ENT |     | ALT |
+
+            bindings = <
+&kp ESCAPE  &trans  &trans    &trans  &trans     &trans  &kp N7        &kp N8        &kp N9        &trans  &trans  &kp BSPC
+&trans      &trans  &trans    &trans  &trans     &trans  &kp N4        &kp N5        &kp NUMBER_6  &trans  &trans  &trans
+&trans      &trans  &trans    &trans  &trans     &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans  &trans
+                    &kp LGUI  &trans  &kp SPACE  &trans  &trans        &kp ENTER     &kp N0        &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        raise_layer {
+            display-name = "Raise Layer";
+
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
+            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+            //              | GUI |     | SPC |     |   |     | ENT |     | ALT |
+
+            bindings = <
+&kp TAB    &kp EXCL  &kp AT    &kp HASH  &kp DLLR   &kp PRCNT  &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
+&kp LCTRL  &trans    &trans    &trans    &trans     &trans     &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LSHFT  &trans    &trans    &trans    &trans     &trans     &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
+                     &kp LGUI  &trans    &kp SPACE  &trans     &trans     &kp RET    &trans     &kp RALT
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        layer_3 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp UP    &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans     &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans    &trans     &trans
+            >;
+        };
+    };
 };
