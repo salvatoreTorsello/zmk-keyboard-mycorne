@@ -46,10 +46,10 @@
             //              | GUI | LWR | SPC |     |   |     | ENT | RSE  | ALT |
 
             bindings = <
-&kp ESCAPE               &kp Q                    &hold_kp_tap_kp LC(W) W  &kp E                    &hold_kp_tap_kp LC(R) R           &kp T   &hold_kp_tap_kp LC(Y) Y  &kp U                            &kp I        &kp O    &kp P     &kp BSPC
-&kp LCTRL                &kp A                    &kp S                    &kp D                    &kp F                             &kp G   &kp H                    &kp J                            &kp K        &kp L    &kp SEMI  &kp SQT
-&hold_mo_tap_kp 3 LSHFT  &hold_kp_tap_kp LC(Z) Z  &hold_kp_tap_kp LC(X) X  &hold_kp_tap_kp LC(C) C  &hold_kp_tap_kp LC(V) V           &kp B   &kp N                    &kp M                            &kp COMMA    &kp DOT  &kp FSLH  &trans
-                                                  &kp LGUI                 &hold_mo_tap_kp 1 TAB    &hold_kp_tap_kp LEFT_SHIFT SPACE  &trans  &kp LG(L)                &hold_kp_tap_kp RIGHT_ALT ENTER  &lt 2 SPACE  &trans
+&kp ESCAPE               &kp Q                    &hold_kp_tap_kp LC(W) W  &kp E                    &hold_kp_tap_kp LC(R) R           &kp T   &hold_kp_tap_kp LC(Y) Y  &kp U                            &kp I      &kp O    &kp P     &kp BSPC
+&kp LCTRL                &kp A                    &kp S                    &kp D                    &kp F                             &kp G   &kp H                    &kp J                            &kp K      &kp L    &kp SEMI  &kp SQT
+&hold_mo_tap_kp 3 LSHFT  &hold_kp_tap_kp LC(Z) Z  &hold_kp_tap_kp LC(X) X  &hold_kp_tap_kp LC(C) C  &hold_kp_tap_kp LC(V) V           &kp B   &kp N                    &kp M                            &kp COMMA  &kp DOT  &kp FSLH  &trans
+                                                  &kp LGUI                 &hold_mo_tap_kp 1 TAB    &hold_kp_tap_kp LEFT_SHIFT SPACE  &trans  &kp LG(L)                &hold_kp_tap_kp RIGHT_ALT ENTER  &mo 2      &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
