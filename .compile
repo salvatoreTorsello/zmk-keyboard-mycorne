@@ -1,0 +1,9 @@
+# Build left (central)
+alias build-left='west build -p always -b xiao_ble//zmk -- -DZMK_EXTRA_MODULES=/home/salvo/git/zmk-keyboard-mycorne/ -DSHIELD=mycorne_left -DZMK_CONFIG=/home/salvo/git/zmk-keyboard-mycorne/config'
+
+# Build right (peripheral)
+alias build-right='west build -p always -b xiao_ble//zmk -- -DZMK_EXTRA_MODULES=/home/salvo/git/zmk-keyboard-mycorne/ -DSHIELD=mycorne_right -DZMK_CONFIG=/home/salvo/git/zmk-keyboard-mycorne/config'
+
+# Build reset firmware
+alias build-reset='west build -p always -b xiao_ble//zmk -- -DSHIELD=settings_reset'
+
