@@ -60,7 +60,7 @@
                 lower_layer {
                         display-name = "Lower Layer";
                         bindings = <
-                                &kp ESCAPE   &bt_hold_only BT_SEL 0 0  &bt_hold_only BT_SEL 0 1  &bt_hold_only BT_SEL 0 2  &trans     &trans  &kp N7  &kp N8     &kp N9  &trans      &kp DELETE  &kp BSPC
+                                &kp ESCAPE   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2   &trans     &trans  &kp N7  &kp N8     &kp N9  &trans      &kp DELETE  &kp BSPC
                                 &trans       &trans                    &trans                    &trans                    &trans     &trans  &kp N4  &kp N5     &kp N6  &trans      &trans      &trans
                                 &bootloader  &trans                    &trans                    &bt_hold_only BT_CLR_ALL  &trans     &trans  &kp N1  &kp N2     &kp N3  &trans      &trans      &trans
                                 &trans                    &trans                    &kp SPACE  &trans  &trans  &kp ENTER  &kp N0  &kp PERIOD
