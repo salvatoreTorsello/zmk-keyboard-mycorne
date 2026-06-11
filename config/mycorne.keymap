@@ -3,79 +3,92 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-        behaviors {
-                hold_mo_tap_kp: hold_mo_tap_kp {
-                        compatible = "zmk,behavior-hold-tap";
-                        label = "HOLD_MO_TAP_KP";
-                        #binding-cells = <2>;
-                        tapping-term-ms = <350>;
-                        flavor = "tap-preferred";
-                        bindings = <&mo>, <&kp>;
-                };
-
-                hold_kp_tap_kp: hold_kp_tap_kp {
-                        compatible = "zmk,behavior-hold-tap";
-                        label = "HOLD_KP_TAP_KP";
-                        bindings = <&kp>, <&kp>;
-                        #binding-cells = <2>;
-                        tapping-term-ms = <200>;
-                };
+    behaviors {
+        hold_mo_tap_kp: hold_mo_tap_kp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_MO_TAP_KP";
+            #binding-cells = <2>;
+            tapping-term-ms = <350>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
         };
 
-        keymap {
-                compatible = "zmk,keymap";
+        hold_kp_tap_kp: hold_kp_tap_kp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_KP_TAP_KP";
+            bindings = <&kp>, <&kp>;
 
-                default_layer {
-                        display-name = "Default Layer";
-
-                        bindings = <
-                                &kp ESCAPE               &kp Q                    &hold_kp_tap_kp LC(W) W  &kp E                    &hold_kp_tap_kp LC(R) R           &kp T   &hold_kp_tap_kp LC(Y) Y  &kp U                            &kp I      &kp O    &kp P     &kp BSPC
-                                &kp LCTRL                &kp A                    &kp S                    &kp D                    &kp F                             &kp G   &kp H                    &kp J                            &kp K      &kp L    &kp SEMI  &kp SQT
-                                &hold_mo_tap_kp 3 LSHFT  &hold_kp_tap_kp LC(Z) Z  &hold_kp_tap_kp LC(X) X  &hold_kp_tap_kp LC(C) C  &hold_kp_tap_kp LC(V) V           &kp B   &kp N                    &kp M                            &kp COMMA  &kp DOT  &kp FSLH  &trans
-                                &kp LGUI                 &hold_mo_tap_kp 1 TAB    &hold_kp_tap_kp LEFT_SHIFT SPACE  &trans  &kp LG(L)                &hold_kp_tap_kp RIGHT_ALT ENTER  &mo 2      &trans
-                        >;
-
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-                };
-
-                lower_layer {
-                        display-name = "Lower Layer";
-
-                        bindings = <
-                                &kp ESCAPE  &trans  &trans                          &trans  &trans     &trans  &kp N7        &kp N8        &kp N9        &trans      &trans  &kp BSPC
-                                &trans      &trans  &trans                          &trans  &trans     &trans  &kp N4        &kp N5        &kp N6  &trans      &trans  &trans
-                                &trans      &trans  &trans                          &trans  &trans     &trans  &kp N1  &kp N2  &kp N3  &trans      &trans  &trans
-                                &bt BT_NXT  &trans  &kp SPACE  &trans  &trans        &kp ENTER     &kp N0        &kp PERIOD
-                        >;
-
-                        sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>;
-                };
-
-                raise_layer {
-                        display-name = "Raise Layer";
-
-                        bindings = <
-                                &kp TAB    &kp EXCL  &kp AT    &kp HASH  &kp DLLR                          &kp PRCNT  &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-                                &trans     &trans    &trans    &trans    &trans                            &trans     &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-                                &kp LSHFT  &trans    &trans    &trans    &trans                            &trans     &trans     &trans     &trans     &trans    &trans    &kp TILDE
-                                &kp LGUI  &trans    &hold_kp_tap_kp LEFT_SHIFT SPACE  &trans     &trans     &kp RET    &trans     &kp RALT
-                        >;
-
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-                };
-
-                layer_3 {
-                        display-name = "Arrows Layer";
-
-                        bindings = <
-                                &trans          &trans  &trans  &trans  &trans  &trans  &trans    &kp UP    &trans     &trans  &trans  &trans
-                                &kp LEFT_SHIFT  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans  &trans
-                                &trans          &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans     &trans  &trans  &trans
-                                &trans  &trans  &trans  &trans  &trans    &trans    &trans     &trans
-                        >;
-
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-                };
-
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
         };
+
+        bt_hold_only: bt_hold_only {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BT_HOLD_ONLY";
+            bindings = <&bt>;
+            #binding-cells = <2>;
+            tapping-term-ms = <2000>;
+            flavor = "tap-preferred";
+        };
+
+        kp_long_hold: kp_long_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KP_LONG_HOLD";
+            bindings = <&kp>;
+            #binding-cells = <2>;
+            tapping-term-ms = <2000>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            display-name = "Default Layer";
+            bindings = <
+&kp ESCAPE               &kp Q                    &hold_kp_tap_kp LC(W) W  &kp E                    &hold_kp_tap_kp LC(R) R           &kp T   &hold_kp_tap_kp LC(Y) Y  &kp U                            &kp I      &kp O    &kp P     &kp BSPC
+&kp LCTRL                &kp A                    &kp S                    &kp D                    &kp F                             &kp G   &kp H                    &kp J                            &kp K      &kp L    &kp SEMI  &kp SQT
+&hold_mo_tap_kp 3 LSHFT  &hold_kp_tap_kp LC(Z) Z  &hold_kp_tap_kp LC(X) X  &hold_kp_tap_kp LC(C) C  &hold_kp_tap_kp LC(V) V           &kp B   &kp N                    &kp M                            &kp COMMA  &kp DOT  &kp FSLH  &trans
+                                                  &kp LGUI                 &hold_mo_tap_kp 1 TAB    &hold_kp_tap_kp LEFT_SHIFT SPACE  &trans  &kp LG(L)                &hold_kp_tap_kp RIGHT_ALT ENTER  &mo 2      &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        lower_layer {
+            display-name = "Lower Layer";
+            bindings = <
+&kp ESCAPE   &trans  &trans      &trans                    &trans     &trans  &kp N7  &kp N8     &kp N9  &trans      &kp DELETE  &kp BSPC
+&trans       &trans  &trans      &trans                    &trans     &trans  &kp N4  &kp N5     &kp N6  &trans      &trans      &trans
+&bootloader  &trans  &trans      &bt_hold_only BT_CLR_ALL  &trans     &trans  &kp N1  &kp N2     &kp N3  &trans      &trans      &trans
+                     &bt BT_NXT  &trans                    &kp SPACE  &trans  &trans  &kp ENTER  &kp N0  &kp PERIOD
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>;
+        };
+
+        raise_layer {
+            display-name = "Raise Layer";
+            bindings = <
+&kp TAB    &kp EXCL  &kp AT    &kp HASH  &kp DLLR                          &kp PRCNT  &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
+&trans     &trans    &trans    &trans    &trans                            &trans     &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LSHFT  &trans    &trans    &trans    &trans                            &trans     &trans     &trans     &trans     &trans    &trans    &kp TILDE
+                     &kp LGUI  &trans    &hold_kp_tap_kp LEFT_SHIFT SPACE  &trans     &trans     &kp RET    &trans     &kp RALT
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        layer_3 {
+            display-name = "Arrows Layer";
+            bindings = <
+&trans          &trans  &trans  &trans  &trans  &kp INS  &kp PAGE_UP  &kp UP    &kp PAGE_DOWN  &kp END  &trans  &trans
+&kp LEFT_SHIFT  &trans  &trans  &trans  &trans  &trans   &kp LEFT     &kp DOWN  &kp RIGHT      &trans   &trans  &trans
+&trans          &trans  &trans  &trans  &trans  &trans   &trans       &trans    &trans         &trans   &trans  &trans
+                        &trans  &trans  &trans  &trans   &trans       &trans    &trans         &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+    };
 };
