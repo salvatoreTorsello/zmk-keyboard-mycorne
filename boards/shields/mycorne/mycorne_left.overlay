@@ -19,3 +19,6 @@
                 ;
 };
 
+&right_encoder {
+        status = "disabled";
+};
